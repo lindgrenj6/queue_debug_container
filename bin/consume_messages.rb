@@ -1,10 +1,12 @@
+#!/usr/bin/env ruby
+
 # frozen_string_literal: true
 
 require 'manageiq-messaging'
 
 messaging_client_opts = {
   protocol: :Kafka,
-  host: 'platform-mq-ci-kafka-bootstrap.platform-mq-ci.svc',
+  host: ENV['QUEUE_HOST'] || 'platform-mq-ci-kafka-bootstrap.platform-mq-ci.svc',
   port: 9092,
   group_ref: 'platform.receptor-controller.responses',
   client_ref: 'platform.receptor-controller.responses'

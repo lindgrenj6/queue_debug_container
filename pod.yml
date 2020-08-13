@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: message-eater
+  name: message-eater
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message-eater
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: message-eater
+    spec:
+      containers:
+      - image: docker.io/lindgrenj6/miq-consume-messages:latest
+        command:
+        - bash
+        args:
+        - -c
+        - tail -f /dev/null
+        name: miq-consume-messages
+        resources: {}
+        imagePullPolicy: Always
+status: {}
